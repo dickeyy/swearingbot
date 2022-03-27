@@ -52,7 +52,7 @@ async function main() {
     let [translations] = await translate.translate(badWord, lang);
     translations = Array.isArray(translations) ? translations : [translations];
     translations.forEach((translation, i) => {
-        const toTweet = `${translation}\nLanguage: ${origLang}`
+        const toTweet = `${translation}\n\nLanguage: ${origLang}`
 
         client.post('statuses/update', { status: toTweet }).then(result => {
             console.log(`Tweeted: ${badWord} -> ${translation} | ${origLang}`);
